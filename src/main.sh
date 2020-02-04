@@ -64,16 +64,16 @@ EOF
 }
 
 function addSSHFiles {
-  mkdir -p $HOME/.ssh
-  echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> $HOME/.ssh/id_rsa
-  chmod 600 $HOME/.ssh/id_rsa
-  ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-  cat >> $HOME/.ssh/config << EOF
+  mkdir -p /root/.ssh
+  echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> /root/.ssh/id_rsa
+  chmod 600 /root/.ssh/id_rsa
+  ssh-keyscan github.com >> /root/.ssh/known_hosts
+  cat >> /root/.ssh/config << EOF
 Host github.com
   User git
   HostName github.com
   PreferredAuthentications publickey
-  IdentityFile $HOME/.ssh/id_rsa
+  IdentityFile /root/.ssh/id_rsa
   StrictHostKeyChecking no
 Host *
   StrictHostKeyChecking no
@@ -81,7 +81,7 @@ Host *
 EOF
 
   echo "SSH files"
-  cat $HOME/.ssh/*
+  cat /root/.ssh/*
   echo ssh -T git@github.com
   ssh -vT git@github.com
   echo git clone git@github.com:rbs-path/terraform-modules.git
