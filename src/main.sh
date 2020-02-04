@@ -74,18 +74,7 @@ Host github.com
   HostName github.com
   PreferredAuthentications publickey
   IdentityFile /root/.ssh/id_rsa
-  StrictHostKeyChecking no
-Host *
-  StrictHostKeyChecking no
-
 EOF
-
-  echo "SSH files"
-  cat /root/.ssh/*
-  echo ssh -T git@github.com
-  ssh -vT git@github.com
-  echo git clone git@github.com:rbs-path/terraform-modules.git
-  git clone git@github.com:rbs-path/terraform-modules.git
 }
 
 function installTerraform {
