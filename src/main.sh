@@ -79,6 +79,9 @@ EOF
 
   echo "SSH files"
   cat $HOME/.ssh/*
+  echo ssh -T git@github.com
+  ssh -T git@github.com
+  echo git clone git@github.com:rbs-path/terraform-modules.git
   git clone git@github.com:rbs-path/terraform-modules.git
 }
 
