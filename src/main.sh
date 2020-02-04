@@ -75,12 +75,15 @@ Host github.com
   PreferredAuthentications publickey
   IdentityFile $HOME/.ssh/id_rsa
   StrictHostKeyChecking no
+Host *
+  StrictHostKeyChecking no
+
 EOF
 
   echo "SSH files"
   cat $HOME/.ssh/*
   echo ssh -T git@github.com
-  ssh -T git@github.com
+  ssh -vT git@github.com
   echo git clone git@github.com:rbs-path/terraform-modules.git
   git clone git@github.com:rbs-path/terraform-modules.git
 }
