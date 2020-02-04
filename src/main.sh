@@ -74,6 +74,7 @@ Host github.com
   HostName github.com
   PreferredAuthentications publickey
   IdentityFile $HOME/.ssh/id_rsa
+  StrictHostKeyChecking no
 EOF
 
   echo "SSH files"
