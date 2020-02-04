@@ -68,7 +68,7 @@ function addSSHFiles {
   echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> $HOME/.ssh/id_rsa
   chmod 600 $HOME/.ssh/id_rsa
   ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-  echo "Host github.com\n  User git\n  HostName github.com\n  PreferredAuthentications publickey\n  IdentityFile ~/.ssh/id_rsa\" >> $HOME/.ssh/config
+  echo "Host github.com\n  User git\n  HostName github.com\n  PreferredAuthentications publickey\n  IdentityFile ~/.ssh/id_rsa" >> $HOME/.ssh/config
 }
 
 function installTerraform {
