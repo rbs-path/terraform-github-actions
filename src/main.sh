@@ -68,7 +68,14 @@ function addSSHFiles {
   echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> $HOME/.ssh/id_rsa
   chmod 600 $HOME/.ssh/id_rsa
   ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-  echo "Host github.com\n  User git\n  HostName github.com\n  PreferredAuthentications publickey\n  IdentityFile ~/.ssh/id_rsa" >> $HOME/.ssh/config
+  cat >> $HOME/.ssh/config << EOF
+Host github.com
+  User git
+  HostName github.com
+  PreferredAuthentications publickey
+  IdentityFile $HOME/.ssh/id_rsa
+EOF
+
   echo "SSH files"
   cat $HOME/.ssh/*
   git clone git@github.com:rbs-path/terraform-modules.git
