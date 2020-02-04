@@ -63,6 +63,14 @@ EOF
   fi
 }
 
+function addSSHFiles {
+  mkdir -p $HOME/.ssh
+  echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> $HOME/.ssh/id_rsa
+  chmod 600 $HOME/.ssh/id_rsa
+  ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+  echo "Host github.com\n  User git\n  HostName github.com\n  PreferredAuthentications publickey\n  IdentityFile ~/.ssh/id_rsa\" >> $HOME/.ssh/config
+}
+
 function installTerraform {
   if [[ "${tfVersion}" == "latest" ]]; then
     echo "Checking the latest version of Terraform"
@@ -106,6 +114,7 @@ function main {
 
   parseInputs
   configureCLICredentials
+  addSSHFiles
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in
