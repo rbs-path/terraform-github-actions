@@ -121,6 +121,7 @@ function main {
   parseInputs
   configureCLICredentials
   addSSHFiles
+  aws sts get-caller-identity
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in

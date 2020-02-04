@@ -1,5 +1,10 @@
 # Changelog
 
+## PATH additions
+
+* SSH parameters for downloading shared modules
+* change docker image to python3:alpine
+
 ## v0.7.1
 
 ### Fixed

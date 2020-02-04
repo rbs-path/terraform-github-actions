@@ -1,5 +1,7 @@
 # Terraform GitHub Actions
 
+## THIS IS A FORK OF THE ORIGINAL HASHICORP ACTIONS!!
+
 Terraform GitHub Actions allow you to execute Terraform commands within GitHub Actions.
 
 The output of the actions can be viewed from the Actions tab in the main repository view. If the actions are executed on a pull request event, a comment may be posted on the pull request.
