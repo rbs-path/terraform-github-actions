@@ -68,10 +68,16 @@ function addSSHFiles {
   echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> /root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
   ssh-keyscan github.com >> /root/.ssh/known_hosts
+  ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
   cat >> /root/.ssh/config << EOF
 Host github.com
   User git
   HostName github.com
+  PreferredAuthentications publickey
+  IdentityFile /root/.ssh/id_rsa
+Host gitlab.com
+  User git
+  HostName gitlab.com
   PreferredAuthentications publickey
   IdentityFile /root/.ssh/id_rsa
 EOF
