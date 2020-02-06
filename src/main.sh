@@ -127,6 +127,8 @@ function main {
   parseInputs
   configureCLICredentials
   addSSHFiles
+  env
+  ls -l /usr/local/bin
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in
