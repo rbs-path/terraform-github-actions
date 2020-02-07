@@ -113,6 +113,10 @@ function installTerraform {
   echo "Successfully unzipped Terraform v${tfVersion}"
 }
 
+function installTerraform {
+  curl -sSL -o /usr/local/bin/tfsec https://github.com/liamg/tfsec/releases/download/v0.19.0/tfsec-linux-amd64
+}
+
 function main {
   # Source the other files to gain access to their functions
   scriptDir=$(dirname ${0})
@@ -123,6 +127,7 @@ function main {
   source ${scriptDir}/terraform_apply.sh
   source ${scriptDir}/terraform_output.sh
   source ${scriptDir}/terraform_import.sh
+  source ${scriptDir}/tfsec.sh
 
   parseInputs
   configureCLICredentials
@@ -157,6 +162,10 @@ function main {
     import)
       installTerraform
       terraformImport ${*}
+      ;;
+    tfsec)
+      installTfsec
+      tfsec ${*}
       ;;
     *)
       echo "Error: Must provide a valid value for terraform_subcommand"
