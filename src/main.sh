@@ -67,8 +67,8 @@ function addSSHFiles {
   mkdir -p /root/.ssh
   echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> /root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
-  ssh-keyscan github.com >> /root/.ssh/known_hosts
-  ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
+  ssh-keyscan github.com >> /root/.ssh/known_hosts 2>/dev/null
+  ssh-keyscan gitlab.com >> /root/.ssh/known_hosts 2>/dev/null
   cat >> /root/.ssh/config << EOF
 Host github.com
   User git
@@ -113,7 +113,7 @@ function installTerraform {
   echo "Successfully unzipped Terraform v${tfVersion}"
 }
 
-function installTerraform {
+function installTfsec {
   curl -sSL -o /usr/local/bin/tfsec https://github.com/liamg/tfsec/releases/download/v0.19.0/tfsec-linux-amd64
 }
 
