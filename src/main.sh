@@ -114,7 +114,14 @@ function installTerraform {
 }
 
 function installTfsec {
+  echo "Downloading TFSec v0.19.0"
   curl -sSL -o /usr/local/bin/tfsec https://github.com/liamg/tfsec/releases/download/v0.19.0/tfsec-linux-amd64
+  chmod +x /usr/local/bin/tfsec
+  if [ "${?}" -ne 0 ]; then
+    echo "Failed to download TFSec"
+    exit 1
+  fi
+  echo "Successfully downloaded TFSec"
 }
 
 function main {
