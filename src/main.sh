@@ -127,7 +127,6 @@ function main {
   parseInputs
   configureCLICredentials
   addSSHFiles
-  echo "python version" && python3 --version
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
 
   case "${tfSubcommand}" in

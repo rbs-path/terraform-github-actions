@@ -2,12 +2,6 @@
 
 function terraformApply {
   # Gather the output of `terraform apply`.
-  echo "Python"
-  echo "/usr/local/bin"
-  ls -l /usr/local/bin
-  echo "/usr/bin"
-  ls -l /usr/bin
-  echo "Path: $PATH"
   echo "apply: info: applying Terraform configuration in ${tfWorkingDir}"
   applyOutput=$(terraform apply -auto-approve -input=false ${*} 2>&1)
   applyExitCode=${?}

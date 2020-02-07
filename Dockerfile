@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh && pip install awscli && ln -s /usr/local/bin/python3 /usr/bin/python3"]
+RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh]
 
 COPY ["src", "/src/"]
 
