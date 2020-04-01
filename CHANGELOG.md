@@ -4,6 +4,7 @@
 
 * SSH parameters for downloading shared modules
 * change docker image to python3:alpine
+* installing gcc and build-base for python packages
 
 ## v0.7.1
 
