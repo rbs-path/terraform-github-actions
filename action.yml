@@ -24,7 +24,7 @@ inputs:
     default: '.'
   args:
     description: 'Terraform arguments like -var-file'
-  outputs:
+outputs:
   tf_actions_output:
     description: 'The Terraform outputs in JSON format.'
   tf_actions_plan_has_changes:
