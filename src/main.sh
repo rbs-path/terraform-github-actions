@@ -65,7 +65,7 @@ EOF
 
 function addSSHFiles {
   mkdir -p /root/.ssh
-  echo "${GIT_SSH_PRIVATE_KEY}" >> /root/.ssh/id_rsa
+  echo "${TF_MODULES_GIT_SSH_PRIVATE_KEY}" >> /root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
   ssh-keyscan github.com >> /root/.ssh/known_hosts 2>/dev/null
   ssh-keyscan gitlab.com >> /root/.ssh/known_hosts 2>/dev/null
