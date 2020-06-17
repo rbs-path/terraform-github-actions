@@ -25,7 +25,7 @@ function terraformApply {
   "user": "${GITHUB_ACTOR}"
 }
 EOF
-    curl -X POST -H "Content-Type: application/json" -H "X-Insert-Key: ${NEWRELIC_API_KEY}" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/2234100/events --data-binary @-
+    curl -v -X POST -H "Content-Type: application/json" -H "X-Insert-Key: ${NEWRELIC_INSERT_API_KEY}" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/2234100/events --data-binary @-
 
   fi
 
