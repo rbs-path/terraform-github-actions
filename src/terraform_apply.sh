@@ -13,6 +13,20 @@ function terraformApply {
     echo "${applyOutput}"
     echo
     applyCommentStatus="Success"
+    gzip -c << EOF |
+{
+  "eventType":"Deployment",
+  "project":"${GITHUB_REPOSITORY}",
+  "ref":"${GITHUB_REF}",
+  "environment": "${TF_WORKSPACE}",
+  "revision": "${GITHUB_SHA::8}",
+  "changelog": "https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}/checks",
+  "description": "${CI_COMMIT_MESSAGE}",
+  "user": "${GITHUB_ACTOR}"
+}
+EOF
+    curl --silent --output /dev/null -X POST -H "Content-Type: application/json" -H "X-Insert-Key: ${NEWRELIC_INSERT_API_KEY}" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/2234100/events --data-binary @-
+
   fi
 
   # Exit code of !0 indicates failure.
