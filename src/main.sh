@@ -162,6 +162,10 @@ function main {
       installTerraform
       terraformApply ${*}
       ;;
+    destroy)
+      installTerraform
+      terraformDestroy ${*}
+      ;;
     output)
       installTerraform
       terraformOutput ${*}
