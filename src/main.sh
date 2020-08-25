@@ -132,6 +132,7 @@ function main {
   source ${scriptDir}/terraform_validate.sh
   source ${scriptDir}/terraform_plan.sh
   source ${scriptDir}/terraform_apply.sh
+  source ${scriptDir}/terraform_destroy.sh
   source ${scriptDir}/terraform_output.sh
   source ${scriptDir}/terraform_import.sh
   source ${scriptDir}/tfsec.sh
