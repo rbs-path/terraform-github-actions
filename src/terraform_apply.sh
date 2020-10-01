@@ -13,7 +13,10 @@ function terraformApply {
     echo "${applyOutput}"
     echo
     applyCommentStatus="Success"
-    gzip -c << EOF |
+    if [[ ${GITHUB_SHA::8} =~ "infra-.*" ]]; then
+      echo "no NR deployment marker"
+    else
+      gzip -c << EOF |
 {
   "eventType":"Deployment",
   "project":"${GITHUB_REPOSITORY}",
@@ -25,8 +28,8 @@ function terraformApply {
   "user": "${GITHUB_ACTOR}"
 }
 EOF
-    curl --silent --output /dev/null -X POST -H "Content-Type: application/json" -H "X-Insert-Key: ${NEW_RELIC_INSERT_API_KEY}" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/2234100/events --data-binary @-
-
+      curl --silent --output /dev/null -X POST -H "Content-Type: application/json" -H "X-Insert-Key: ${NEW_RELIC_INSERT_API_KEY}" -H "Content-Encoding: gzip" https://insights-collector.newrelic.com/v1/accounts/2234100/events --data-binary @-
+    fi
   fi
 
   # Exit code of !0 indicates failure.
