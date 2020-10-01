@@ -13,9 +13,8 @@ function terraformApply {
     echo "${applyOutput}"
     echo
     applyCommentStatus="Success"
-    if [[ ${GITHUB_SHA::8} =~ "infra-.*" ]]; then
-      echo "no NR deployment marker"
-    else
+    if [[ ${GITHUB_SHA::8} =~ "rbs-path/infra-.*" ]]; then
+      # Only send marker for infra repos. The other will do it themselves
       gzip -c << EOF |
 {
   "eventType":"Deployment",
